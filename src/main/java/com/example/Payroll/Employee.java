@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Employee {
+class Employee {
 
     private @Id
     @GeneratedValue 
