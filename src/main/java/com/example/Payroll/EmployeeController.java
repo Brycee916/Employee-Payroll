@@ -3,6 +3,8 @@ package com.example.Payroll;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,6 +20,9 @@ class EmployeeController {
         return repository.findAll();
     }
 
-    
+    @PostMapping("/employees")
+    Employee newEmployee(@RequestBody Employee newEmployee){
+        return repository.save(newEmployee);
+    }
 
 }
