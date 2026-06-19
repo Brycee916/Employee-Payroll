@@ -1,6 +1,7 @@
 package com.example.Payroll;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,7 +49,12 @@ class EmployeeController {
     }
 
     @DeleteMapping("/employees/{id}")
-    void deleteEmployee(@PathVariable Long id){
+    Employee deleteEmployee(@PathVariable Long id){
+        Employee deletedEmployee = repository.findById(id)
+            .orElseThrow(() -> new EmployeeNotFoundException(id));
+            
         repository.deleteById(id);
+
+        return deletedEmployee;
     }
 }
